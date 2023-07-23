@@ -144,12 +144,12 @@
             queryResults.innerHTML = r.totalResults;
             totalPages = Math.ceil(r.totalResults / articlePerPage)
             if (page == 1) {
-                pre.href = `/?q=${query}&pageno=${page}`;
+                pre.href = `?q=${query}&pageno=${page}`;
             } else {
-                pre.href = `/?q=${query}&pageno=${page - 1}`;
+                pre.href = `?q=${query}&pageno=${page - 1}`;
             }
 
-            next.href = `/?q=${query}&pageno=${page + 1}`;
+            next.href = `?q=${query}&pageno=${page + 1}`;
 
             let str = "";
 
