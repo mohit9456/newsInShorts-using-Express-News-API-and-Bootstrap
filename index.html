@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>News_Inshorts- My favourite news app</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg position-sticky top-0"
+        style="z-index: 3; background-color: rgb(246, 246, 246);">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 fw-bold " href="/">NewsInshort</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-4">
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link active" aria-current="page" href="?q=News&pageno=1">Home</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=India&pageno=1">India</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=World&pageno=1">World</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=Sports&pageno=1">Sports</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=Indian+weather&pageno=1">Weather</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=Technical&pageno=1">Technical</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=Business&pageno=1">Business</a>
+                    </li>
+                    <li class="nav-item fw-bold px-2">
+                        <a class="nav-link" href="?q=Space&pageno=1">SpaceX</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search"
+                        autocomplete="off">
+                    <input class="form-control me-2" name="pageno" value="1" type="hidden" placeholder="Search"
+                        aria-label="Search" autocomplete="off">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container row mx-auto my-5">
+        <h1 class="my-3"><span id="queryText"></span> -InShorts(<span id="queryResults"></span> Results)</h1>
+        <hr />
+        <div id="content" class="row">
+
+            <h1 class="fw-bold fs-1">LOADING.......</h1>
+        </div>
+
+        <div class="prevnext my-4 d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li id="pre1" class="page-item container fs-5 fw-bolder"><a id="pre"
+                            class="page-link rounded-3 px-5" href="#"> Previous</a></li>
+                    <li class="page-item container fs-5 fw-bolder "><a id="next" class="page-link rounded-3 px-5"
+                            href="#">Next ></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+    <footer class="bg-light text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #0082ca;" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <!-- Github -->
+                <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="#!" role="button"><i
+                        class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3 text-dark" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-primary text-decoration-none" href="/">News-Inshorts.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/63acc2c5e9.js" crossorigin="anonymous"></script>
+
+
+    <script>
+        console.log("Hey i am javascript of your app");
+        let articlePerPage;
+        let totalPages;
+        let query = window.location.search.split('?')[1].split('&')[0].split('=')[1];
+        let page = parseInt(window.location.search.split('?')[1].split('&')[1].split('=')[1]);
+        console.log(typeof (page));
+        console.log(query, page);
+
+
+        const fetchNews = async (query, page) => {
+            let a = await fetch(`https://newsapi.org/v2/everything?q=${query}&apiKey=d501345759ed4f888481fabfc6f7f24b&pageSize=12&page=${page}`);
+            let r = await a.json();
+            console.log(r);
+            queryText.innerHTML = query.replace("+", " ");
+            queryResults.innerHTML = r.totalResults;
+            totalPages = Math.ceil(r.totalResults / articlePerPage)
+            if (page == 1) {
+                pre.href = `/?q=${query}&pageno=${page}`;
+            } else {
+                pre.href = `/?q=${query}&pageno=${page - 1}`;
+            }
+
+            next.href = `/?q=${query}&pageno=${page + 1}`;
+
+            let str = "";
+
+            for (let item of r.articles) {
+                let date = new Date(item.publishedAt).toLocaleDateString();
+                if (item.urlToImage !== null) {
+                    str = str + `<div class="card m-2 shadow-lg" style="width: 18rem; background-color: rgb(246, 246, 246);">
+                                <img src="${item.urlToImage}" class="card-img-top  mt-3 rounded-3" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.title}</h5>
+                                    <span class="fw-bold text-decoration-underline">Source: ${item.source.name}</span><br />
+                                    <span class="fw-bold mt-2">Published at: ${date}</span>
+                                    <p class="card-text mt-3">${item.description}</p>
+                                    <a target="_blank" href="${item.url}" class="btn btn-secondary">Read more</a>
+                                </div>
+                            </div>`
+                } else {
+                    str = str + `<div class="card m-2 shadow-lg" style="width: 18rem; background-color: rgb(246, 246, 246);">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2AtLAFKBeY7LcI53n5kQvC2OZXLGZuEs0Kw&usqp=CAU" class="card-img-top mt-3 rounded-3" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.title}</h5>
+                                    <span class="fw-bold text-decoration-underline">Source: ${item.source.name}</span>
+                                    <span class="fw-bold mt-2">Published at: ${date}</span>
+                                    <p class="card-text mt-3">${item.description}</p>
+                                    <a target="_blank" href="${item.url}" class="btn btn-secondary">Read more</a>
+                                </div>
+                            </div>`
+                }
+
+            }
+
+            content.innerHTML = str;
+        }
+
+
+        fetchNews(query, page);
+
+
+
+    </script>
+
+
+</body>
+
+</html>
